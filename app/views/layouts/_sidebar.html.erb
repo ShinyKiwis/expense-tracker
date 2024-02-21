@@ -1,0 +1,13 @@
+<%= image_tag "logo.png", width: "180" %>
+<div class="pt-8 flex flex-col h-[90%]">
+  <%= render 'layouts/sidebar_item', item: 'layout-collage', content: 'Dashboard', path: root_path %>
+  <p class="text-2xl text-blue font-semibold my-4">Navigation</p>
+  <%= render 'layouts/sidebar_item', item: 'coin', content: 'Expenses', path: expenses_path %>
+  <%= render 'layouts/sidebar_item', item: 'calendar-time', content: 'Subscriptions', path: subscriptions_path %>
+  <div class="mt-auto">
+    <%= button_to logout_path, method: :delete, class: "flex items-center text-xl font-semibold gap-4 px-2 py-1.5 text-gray hover:text-red" do %>
+      <%= tabler_icon 'logout', size: '1.5em' %>
+      <span>Logout</span>
+    <% end %>
+  </div>
+</div>

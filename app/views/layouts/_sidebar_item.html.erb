@@ -1,0 +1,6 @@
+<div class="text-xl font-semibold w-full cursor-pointer <%= is_active_path?(path) ? "text-blue bg-lightblue" : "text-gray" %> px-2 py-1.5 rounded-lg hover:text-blue mt-3">
+  <%= link_to path, class: "flex gap-4 items-center" do %>
+    <%= tabler_icon item, size: '1.5em' %>
+    <span><%= content %></span>
+  <% end %>
+</div>
