@@ -5,6 +5,12 @@ class PagesController < ApplicationController
   end
 
   def expenses
+    @transaction = Transaction.new
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.json { render json: TransactionDatatable.new(params) }
+    end
   end
 
   def subscriptions

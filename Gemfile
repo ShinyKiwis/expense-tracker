@@ -74,3 +74,16 @@ gem "tabler_icons_ruby", "~> 1.2"
 gem 'bcrypt', '~> 3.1.7'
 
 gem "pry", "~> 0.14.2"
+
+
+gem "ajax-datatables-rails", "~> 1.4"
+
+gem "kaminari", "~> 1.2"
+
+gem "jquery-datatables", "~> 1.10"
+
+gem "jquery-datatables-rails", "~> 3.4"
+
+gem "jquery-rails", "~> 4.6"
+
+gem "select2-rails", "~> 4.0"

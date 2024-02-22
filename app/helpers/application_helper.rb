@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def is_active_path?(current_path)
-    current_path == request.path
+    current_path == request.path 
   end
 end

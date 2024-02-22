@@ -1,4 +1,68 @@
 <% provide(:title, "Expenses") %>
-<div>
-  <h1 class="font-semibold text-4xl text-blue">Expenses</h1>
+<div class="px-8 flex flex-col h-full">
+  <div class="flex items-center mb-8 relative z-10">
+    <h1 class="font-semibold text-4xl text-blue">Expenses</h1>
+    <button class="bg-blue text-white font-semibold px-4 py-2 rounded-md ms-auto hover:bg-darkblue" id="add-expense-button">
+      Add expense
+    </button>
+    <div id="add-expense-modal" class="absolute right-0 top-12 bg-white rouned-md hidden w-1/4 px-8 py-4 shadow-md shadow-gray">
+      <span class="text-2xl font-semibold text-blue">New expense</span>
+      <%= form_with model: @transaction,url: transactions_path, method: :post, class: "flex flex-col gap-2 mt-4" do |f| %>
+        <%= f.label :description, "Description", class: "font-semibold" %>
+        <%= f.text_field :description, placeholder: "Expense's description", class: "text-black rounded-md border-2 border-gray focus:ring-0 focus:border-blue focus:border-[3px]"%>
+        <%= f.label :date, "Date", class: "font-semibold" %>
+        <%= f.date_field :date, class: "rounded-md px-2 py-2 border-2 border-gray text-sm" %>
+        <%= f.label :category, "Category", class: "font-semibold" %>
+        <%= f.select :category, @categories.map { |category| [category.name] }, class: "w-full text-black" %> 
+        <%= f.label :amount, "Amount", class: "font-semibold" %>
+        <%= f.text_field :amount, placeholder: "Expense's amount", pattern: "[0-9]+", class: "text-black rounded-md border-2 border-gray focus:ring-0 focus:border-blue focus:border-[3px]" %>
+        <%= f.submit "Add", class: "bg-blue hover:bg-darkblue text-white rounded-md cursor-pointer px-4 py-2 font-semibold mt-4" %>
+      <% end %>
+    </div>
+  </div>
+  <table id="expenses-datatable", data-source="<%= expenses_path(format: :json) %>">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </div>
+
+<script type="module">
+$('#expenses-datatable').dataTable({
+  "processing": true,
+  "serverSide": true,
+  "ajax": {
+    "url": $('#expenses-datatable').data('source')
+  },
+  "pagingType": "full_numbers",
+  "columns": [
+    {"data": "id"},
+    {"data": "date"},
+    {"data": "description"},
+    {"data": "category"},
+    {"data": "amount"}
+  ]
+});
+
+$('#transaction_category').select2({
+  tags: true
+});
+
+const addExpenseButton = document.getElementById("add-expense-button");
+addExpenseButton.addEventListener("click", () => {
+  const addExpenseModal = document.getElementById("add-expense-modal");
+  if (addExpenseModal.classList.contains("hidden")) {
+    addExpenseModal.classList.remove("hidden");
+  }else {
+    addExpenseModal.classList.add("hidden");
+  }
+})
+</script>
