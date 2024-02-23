@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :transactions, only: [:create, :edit, :destroy]
+  resources :transactions, only: [:create, :edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
   get '/expenses', to: 'pages#expenses'

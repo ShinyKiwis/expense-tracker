@@ -1,4 +1,4 @@
-class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
+class SubscriptionDatatable < AjaxDatatablesRails::ActiveRecord
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::UrlHelper
   include Rails.application.routes.url_helpers
@@ -26,6 +26,6 @@ class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Transaction.where(ttype: "Expense")
+    Transaction.where(ttype: "subscription")
   end
 end

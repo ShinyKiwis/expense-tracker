@@ -14,6 +14,12 @@ class PagesController < ApplicationController
   end
 
   def subscriptions
+    @transaction = Transaction.new
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.json { render json: SubscriptionDatatable.new(params) }
+    end
   end
 
   private

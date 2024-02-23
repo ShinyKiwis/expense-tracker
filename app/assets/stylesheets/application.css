@@ -24,13 +24,18 @@
   width: 100%;
   flex: 1;
   z-index: 0;
+  /* border-bottom: 2px solid #ccc !important; */
+}
+
+.dataTables_scrollBody {
+  border: none !important;
 }
 
 table {
   width: 100%;
   margin-top: 0.4em;
   font-family: "Poppins", sans-serif !important;
-  border-bottom: 2px solid #ccc !important;
+  /* border-bottom: 2px solid #ccc !important; */
 }
 
 th{
@@ -100,6 +105,10 @@ td {
   outline: none;
 }
 
+.dataTables_scrollBody thead tr[role="row"]{
+    visibility: collapse !important;
+}
+
 .paginate_button {
   background: transparent !important;
   border-radius: 0.4em;
@@ -130,4 +139,13 @@ td {
 
 .select2-selection__arrow {
   margin: 0.4em;
+}
+
+.even {
+  background-color: #e8f3ff !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: none;
+  color: black!important;
 }
