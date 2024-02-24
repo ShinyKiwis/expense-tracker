@@ -26,6 +26,6 @@ class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Transaction.where(ttype: "Expense")
+    Transaction.where(ttype: "expense")
   end
 end

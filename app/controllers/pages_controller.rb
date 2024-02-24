@@ -22,6 +22,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def categories
+    @category = Category.new
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.json { render json: CategoryDatatable.new(params) }
+    end
+  end
+
   private
   def authenticate
     redirect_to login_path if not current_user

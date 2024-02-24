@@ -1,8 +1,13 @@
 <% provide(:title, "Expenses") %>
 <div class="px-8 flex flex-col h-full">
   <div class="flex items-center mb-8 relative z-10">
-    <h1 class="font-semibold text-4xl text-blue">Expenses</h1>
+    <h1 class="font-semibold text-4xl text-blue">Edit <%= @transaction.ttype %> <%= @transaction.id %></h1>
   </div>
+  <% if flash[:alert] %>
+    <% flash[:alert].each do |message| %>
+      <p class="font-semibold text-md px-4 py-2 w-fit rounded-md mb-4 bg-lightred text-red"><%= message %></p>
+    <% end %>
+  <% end %>
   <%= form_with model: @transaction, class: "flex flex-col gap-2 w-fit" do |f| %>
     <%= f.hidden_field :ttype, :value => @transaction.ttype %>
     <%= f.label :description, "Description", class: "font-semibold text-2xl" %>
@@ -12,7 +17,7 @@
     <%= f.label :category, "Category", class: "font-semibold text-2xl" %>
     <%= f.select :category, @categories.map { |category| [category.name] }, class: "w-full text-black" %> 
     <%= f.label :amount, "Amount", class: "font-semibold text-2xl" %>
-     <% amount_value = @transaction.amount %>
+    <% amount_value = @transaction.amount %>
     <% formatted_amount = amount_value.to_i == amount_value ? amount_value.to_i : "%.2f" % amount_value %>
     <%= f.text_field :amount, value: formatted_amount, placeholder: "Expense's amount", pattern: "[0-9]+", class: "text-black rounded-md border-2 border-gray focus:ring-0 focus:border-blue focus:border-[3px]" %>
     <div class="flex gap-2 mt-4 items-stretch">

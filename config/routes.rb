@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :transactions, only: [:create, :edit, :update]
+  resources :categories, only: [:create, :edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
   get '/expenses', to: 'pages#expenses'
   get '/subscriptions', to: 'pages#subscriptions'
+  get '/categories', to: 'pages#categories'
 
   root 'pages#dashboard'
   get "up" => "rails/health#show", as: :rails_health_check

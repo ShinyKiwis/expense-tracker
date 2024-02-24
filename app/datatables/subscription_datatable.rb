@@ -1,7 +1,6 @@
 class SubscriptionDatatable < AjaxDatatablesRails::ActiveRecord
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::UrlHelper
-  include Rails.application.routes.url_helpers
   
   def view_columns
     @view_columns ||= {
