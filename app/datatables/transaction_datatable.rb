@@ -26,6 +26,13 @@ class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Transaction.where(ttype: "expense")
+    case params[:action]
+    when "recent"
+      Transaction.where(ttype: "expense").where(date: Date.current.beginning_of_month..Date.current.end_of_month).order(date: :desc).limit(10)
+    when "monthly"
+      Transaction.where(ttype: "subscription").limit(10)
+    else
+      Transaction.where(ttype: "expense")
+    end
   end
 end

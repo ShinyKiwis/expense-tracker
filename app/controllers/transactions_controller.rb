@@ -16,7 +16,7 @@ class TransactionsController < ApplicationController
         if not Category.exists?(name: transaction_params[:category])
           Category.create(name: transaction_params[:category])
         end
-        flash[:notice] = "Updated #{params[:ttype].downcase} #{params[:id]}!"
+        flash[:notice] = "Updated #{transaction_params[:ttype].downcase} #{params[:id]}!"
       else
         flash[:alert] = @transaction.errors.full_messages
         return redirect_to edit_transaction_path(@transaction)

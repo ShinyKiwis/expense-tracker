@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
   get '/expenses', to: 'pages#expenses'
+  get '/recent_expenses', to: 'pages#recent_expenses'
+  get '/monthly_subscriptions', to: 'pages#monthly_subscriptions'
   get '/subscriptions', to: 'pages#subscriptions'
   get '/categories', to: 'pages#categories'
 

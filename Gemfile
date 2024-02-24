@@ -87,3 +87,7 @@ gem "jquery-datatables-rails", "~> 3.4"
 gem "jquery-rails", "~> 4.6"
 
 gem "select2-rails", "~> 4.0"
+
+gem "chartkick", "~> 5.0"
+
+gem "groupdate", "~> 6.4"
