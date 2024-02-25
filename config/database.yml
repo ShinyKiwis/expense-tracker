@@ -84,4 +84,5 @@ production:
   <<: *default
   database: coiink_production
   username: coiink
+  url : <%= ENV["COIINK_DATABASE_URL"] %>
   password: <%= ENV["COIINK_DATABASE_PASSWORD"] %>
