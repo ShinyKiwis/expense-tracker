@@ -22,7 +22,7 @@ class PagesController < ApplicationController
 
   def recent_expenses
     respond_to do |format|
-      format.json { render json: TransactionDatatable.new(action: "recent") }
+      format.json { render json: TransactionDatatable.new(params) }
     end
   end
 
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
 
   def monthly_subscriptions
     respond_to do |format|
-      format.json { render json: TransactionDatatable.new(action: "monthly") }
+      format.json { render json: TransactionDatatable.new(params) }
     end
   end
 

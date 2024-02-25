@@ -2,7 +2,7 @@ class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::UrlHelper
   include Rails.application.routes.url_helpers
-  
+
   def view_columns
     @view_columns ||= {
       id: { source: "Transaction.id", searchable: true, orderable: true },
@@ -26,10 +26,11 @@ class TransactionDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
+    puts params
     case params[:action]
-    when "recent"
+    when "recent_expenses"
       Transaction.where(ttype: "expense").where(date: Date.current.beginning_of_month..Date.current.end_of_month).order(date: :desc).limit(10)
-    when "monthly"
+    when "monthly_subscriptions"
       Transaction.where(ttype: "subscription").limit(10)
     else
       Transaction.where(ttype: "expense")
