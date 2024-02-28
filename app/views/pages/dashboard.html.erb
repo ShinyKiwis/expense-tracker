@@ -6,11 +6,11 @@
   <div class="flex h-full gap-4">
     <div class="w-1/2">
       <div class="w-full h-full">
-        <div class="h-[40%]">
+        <div class="h-[40vh]">
           <span class="font-medium text-black text-2xl"><%= Time.now.strftime("%B %Y") %>'s expenses</span>
           <%= line_chart @current_month_transactions_data, ytitle: "Unit in VND(₫)", curve: false %>
         </div>
-        <div class="h-[60%]">
+        <div class="h-[60vh]">
           <span class="font-medium text-black text-2xl">Recent expenses</span>
           <table id="recent-expenses-datatable", data-source="<%= recent_expenses_path(format: :json) %>">
             <thead>
@@ -30,20 +30,20 @@
     </div>
     <div class="w-1/2">
       <div class="w-full h-full">
-        <div class="h-[40%]">
+        <div class="h-[40vh]">
           <span class="font-medium text-black text-2xl">Top categories</span>
           <div class="flex">
-            <div class="w-1/2">
+            <div class="w-1/2 h-full">
               <span class="font-medium text-black text-xl">This year</span>
               <%= pie_chart @current_year_categories_data %>
             </div>
-            <div class="w-1/2">
+            <div class="w-1/2 h-full">
               <span class="font-medium text-black text-xl">Total</span>
               <%= pie_chart @total_categories_data %>
             </div>
           </div>
         </div>
-        <div class="h-[60%]">
+        <div class="h-[60vh]">
           <span class="font-medium text-black text-2xl">Monthly subscriptions</span>
           <table id="monthly-subscriptions-datatable", data-source="<%= monthly_subscriptions_path(format: :json) %>">
             <thead>
