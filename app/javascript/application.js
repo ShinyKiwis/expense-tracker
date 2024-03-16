@@ -7,5 +7,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "chartkick"
 import "Chart.bundle"
-import jQuery from "jquery"
-let $ = window.$ = window.jQuery = jQuery
